@@ -15,7 +15,7 @@ const server = http.createServer(app);
 const io = new Server(server ,
     {
         cors: {
-            origin: "*", // Change this in future
+            origin: "https://dev-verse-roan.vercel.app/", // Change this in future
         },
     }
 );
