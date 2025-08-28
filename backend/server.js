@@ -14,12 +14,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, "frontend/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
 
 
 
@@ -107,6 +101,14 @@ io.on('connection', socket => {
         socket.leave(socket.roomId);        
     });
 });
+
+// Serve frontend
+app.use(express.static(path.join(__dirname, "frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
+
 
 
 
