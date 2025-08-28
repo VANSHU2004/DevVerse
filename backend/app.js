@@ -14,7 +14,7 @@ connect();
 const app = express();
 // CORS configuration
 app.use(cors({
-    origin: "https://dev-verse-roan.vercel.app/", // Change this in future
+    origin: "https://dev-verse-one.vercel.app/", // Change this in future
 }))
 
 // to get logs of request
