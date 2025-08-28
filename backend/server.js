@@ -99,11 +99,14 @@ io.on('connection', socket => {
     });
 });
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// Point from backend → frontend
 
-app.get("/:path*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
+const frontendPath = path.join(__dirname, "../frontend/dist");
+
+app.use(express.static(frontendPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 
