@@ -13,7 +13,9 @@ import aiRoutes from "./routes/ai.routes.js";
 connect();
 const app = express();
 // CORS configuration
-app.use(cors())
+app.use(cors({
+    origin: "*", // Change this in future
+}))
 
 // to get logs of request
 
