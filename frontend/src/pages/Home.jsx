@@ -20,7 +20,12 @@ const Home = () => {
   // console.log('Projects:', projects);
 
   useEffect(() => {
-    axios.get('projects/all')
+
+    axios.get('projects/all' , {
+      headers: {
+        "Authorization": `bearer ${localStorage.getItem('token')}`
+      }
+    })
     .then((res) => {
       // console.log('Projects fetched successfully:', res.data);
 
