@@ -13,9 +13,24 @@ import aiRoutes from "./routes/ai.routes.js";
 connect();
 const app = express();
 // CORS configuration
+const allowedOrigins = [
+  "http://localhost:3000", // for local dev
+  "https://dev-verse-roan.vercel.app",
+  "https://dev-verse-one.vercel.app",
+  "https://dev-verse-weld.vercel.app",
+  "https://dev-verse.vercel.app" // final production domain
+];
+
 app.use(cors({
-    origin: "https://dev-verse-weld.vercel.app/", // Change this in future
-}))
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 // to get logs of request
 
